@@ -38,14 +38,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
         categoryList = (ListView)findViewById(R.id.navigation_list);
 
-        CategoryModel[] categories = new CategoryModel[13];
-        categories[0]=new CategoryModel("Dev");
-        categories[1]=new CategoryModel("Movie");
-        categories[2]=new CategoryModel("Food");
 
-        DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this,R.layout.list_view_item,categories);
-        categoryList.setAdapter(adapter);
-//        categoryList.setOnItemClickListener(new DrawerItemClickListener());
 
         factView = (TextView)findViewById(R.id.textView);
 
@@ -63,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(String response) {
             Log.i("Fact received",response);
-            Fact fact = new Fact();
+            Fact fact;
             fact = gson.fromJson(response,Fact.class);
             factView.setText(fact.getValue());
 
