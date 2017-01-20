@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">What The Chuck</string>
+
+    <!--Categories-->
+    <string-array name="categories">
+        <item>Dev</item>
+        <item>Movie</item>
+        <item>Food</item>
+        <item>Celebrity</item>
+        <item>Science</item>
+        <item>Political</item>
+        <item>Sports</item>
+        <item>Music</item>
+        <item>History</item>
+        <item>Travel</item>
+        <item>Career</item>
+        <item>Money</item>
+        <item>Fashion</item>
+    </string-array>
+
 </resources>

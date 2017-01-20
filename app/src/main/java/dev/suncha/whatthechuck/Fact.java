@@ -4,11 +4,20 @@ package dev.suncha.whatthechuck;
  * Created by nepahima on 1/19/2017.
  */
 
-public class ChuckNorrisFactModel {
+public class Fact {
+    String category;
     String icon_url;
     String id;
     String url;
     String value;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public String getIcon_url() {
         return icon_url;
