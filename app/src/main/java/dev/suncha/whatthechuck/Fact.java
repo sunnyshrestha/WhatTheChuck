@@ -5,19 +5,10 @@ package dev.suncha.whatthechuck;
  */
 
 public class Fact {
-    String category;
     String icon_url;
     String id;
     String url;
     String value;
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public String getIcon_url() {
         return icon_url;

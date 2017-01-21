@@ -2,7 +2,7 @@
     <string name="app_name">What The Chuck</string>
 
     <string name="categories">Categories</string>
-    <string name="random">Random Fact</string>
+    <string name="random">Random Facts</string>
     <string name="dev">Dev</string>
     <string name="movie">Movie</string>
     <string name="food">Food</string>
