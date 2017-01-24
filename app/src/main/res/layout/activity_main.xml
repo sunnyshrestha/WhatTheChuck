@@ -1,21 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/radial_drawable"
     tools:context="dev.suncha.whatthechuck.MainActivity">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:id="@+id/toolbar"
-        android:background="@color/primary"/>
+        android:background="@color/primary" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_below="@id/toolbar"/>
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <com.bhargavms.dotloader.DotLoader
+        android:id="@+id/text_dot_loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        custom:color_array="@array/dot_colors"
+        custom:dot_radius="3dp"
+        custom:number_of_dots="5" />
+
+    <com.like.LikeButton
+        android:id="@+id/starButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/textView"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
+        custom:anim_scale_factor="2"
+        custom:circle_end_color="#f39c12"
+        custom:circle_start_color="@color/colorPrimary"
+        custom:dots_primary_color="@color/colorAccent"
+        custom:dots_secondary_color="@color/md_white_1000"
+        custom:icon_size="25dp"
+        custom:icon_type="star"
+        custom:is_enabled="true"
+        custom:liked="false"
+        android:visibility="invisible"/>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/bottom_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/copyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            custom:fb_borderColor="#FFFFFF"
+            custom:fb_borderWidth="1dp"
+            custom:fb_defaultColor="#3b5998"
+            custom:fb_focusColor="#5577bd"
+            custom:fb_fontIconResource="&#xf0c5;"
+            custom:fb_iconPaddingLeft="20dp"
+            custom:fb_iconPosition="right"
+            custom:fb_radius="20dp"
+            custom:fb_text="@string/share"
+            custom:fb_textColor="#FFFFFF" />
+
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            custom:fb_borderColor="#FFFFFF"
+            custom:fb_borderWidth="1dp"
+            custom:fb_defaultColor="#3b5998"
+            custom:fb_focusColor="#5577bd"
+            custom:fb_fontIconResource="&#xf074;"
+            custom:fb_iconPaddingLeft="20dp"
+            custom:fb_iconPosition="right"
+            custom:fb_radius="20dp"
+            custom:fb_text="@string/next" />
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

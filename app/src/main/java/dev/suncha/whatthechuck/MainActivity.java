@@ -1,16 +1,19 @@
 package dev.suncha.whatthechuck;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,7 +21,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bhargavms.dotloader.DotLoader;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.gson.Gson;
+import com.like.LikeButton;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -29,13 +36,13 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import mehdi.sakout.fancybuttons.FancyButton;
+
 public class MainActivity extends AppCompatActivity {
 
-    private String[] navigationDrawerItemTitles;
-    private DrawerLayout drawerLayout;
-    private ListView categoryList;
-    private RelativeLayout mainParent;
+    Fact fact;
 
+    private RelativeLayout mainParent;
 
     private static String ENDPOINT;
     private RequestQueue requestQueue;
@@ -43,13 +50,30 @@ public class MainActivity extends AppCompatActivity {
     private Gson gson;
     Toolbar toolbar;
     Drawer result;
+    private FancyButton nextButton, copyButton;
+    DotLoader dotloader;
+    LikeButton starButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(getApplication());
         setContentView(R.layout.activity_main);
+
         mainParent = (RelativeLayout) findViewById(R.id.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        nextButton = (FancyButton) findViewById(R.id.nextButton);
+        copyButton = (FancyButton) findViewById(R.id.copyButton);
+        dotloader = (DotLoader) findViewById(R.id.text_dot_loader);
+        Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/PoiretOne-Regular.ttf");
+        factView = (TextView) findViewById(R.id.textView);
+        starButton = (LikeButton) findViewById(R.id.starButton);
+
+
+        //font for factview
+        factView.setTypeface(font);
+        factView.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.md_white_1000));
 
         //Add drawer
         new DrawerBuilder().withActivity(this).build();
@@ -111,46 +135,88 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         switch (position) {
                             case 1:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadRandomFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 2:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadDevFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 3:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadMovieFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 4:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadFoodFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 5:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadCelebrityFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 6:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadScienceFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 7:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadPoliticalFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 8:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadSportsFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 9:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadMusicFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 10:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadHistoryFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 11:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadTravelFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 12:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadCareerFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 13:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadMoneyFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             case 14:
+                                starButton.setVisibility(View.INVISIBLE);
+                                dotloader.setVisibility(View.VISIBLE);
                                 loadFashionFact();
+                                starButton.setVisibility(View.VISIBLE);
                                 break;
                             default:
                                 break;
@@ -161,14 +227,109 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .build();
 
-        //result.addStickyFooterItem(categories);
-
-
-        factView = (TextView) findViewById(R.id.textView);
-
         requestQueue = Volley.newRequestQueue(this);
         gson = new Gson();
-        fetchFacts(ENDPOINT);
+        loadRandomFact();
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dotloader.setVisibility(View.VISIBLE);
+                loadNextFact(result.getCurrentSelectedPosition());
+            }
+        });
+
+        copyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyToClipboard();
+            }
+        });
+    }
+
+    private void copyToClipboard() {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("clip data", factView.getText().toString());
+        clipboard.setPrimaryClip(clip);
+        Snackbar.make(mainParent, R.string.copied, Snackbar.LENGTH_SHORT).show();
+    }
+
+
+    private void loadNextFact(int position) {
+        switch (position) {
+            case 1:
+                starButton.setVisibility(View.INVISIBLE);
+                loadRandomFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                starButton.setVisibility(View.INVISIBLE);
+                loadDevFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                starButton.setVisibility(View.INVISIBLE);
+                loadMovieFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 4:
+                starButton.setVisibility(View.INVISIBLE);
+                loadFoodFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 5:
+                starButton.setVisibility(View.INVISIBLE);
+                loadCelebrityFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 6:
+                starButton.setVisibility(View.INVISIBLE);
+                loadScienceFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 7:
+                starButton.setVisibility(View.INVISIBLE);
+                loadPoliticalFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 8:
+                starButton.setVisibility(View.INVISIBLE);
+                loadSportsFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 9:
+                starButton.setVisibility(View.INVISIBLE);
+                loadMusicFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 10:
+                starButton.setVisibility(View.INVISIBLE);
+                loadHistoryFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 11:
+                starButton.setVisibility(View.INVISIBLE);
+                loadTravelFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 12:
+                starButton.setVisibility(View.INVISIBLE);
+                loadCareerFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 13:
+                starButton.setVisibility(View.INVISIBLE);
+                loadMoneyFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            case 14:
+                starButton.setVisibility(View.INVISIBLE);
+                loadFashionFact();
+                starButton.setVisibility(View.VISIBLE);
+                break;
+            default:
+                break;
+        }
     }
 
     private void loadFashionFact() {
@@ -321,10 +482,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(String response) {
             Log.i("Fact received", response);
-            Fact fact;
+//            Fact fact;
             fact = gson.fromJson(response, Fact.class);
             factView.setText(fact.getValue());
-
+            dotloader.setVisibility(View.INVISIBLE);
         }
     };
 
@@ -333,6 +494,7 @@ public class MainActivity extends AppCompatActivity {
         public void onErrorResponse(VolleyError error) {
             Log.e("Fact error", error.toString());
             Snackbar.make(mainParent, "NO INTERNET", Snackbar.LENGTH_SHORT).show();
+            dotloader.setVisibility(View.INVISIBLE);
         }
     };
 }

@@ -17,6 +17,9 @@
     <string name="money">Money</string>
     <string name="fashion">Fashion</string>
 
+    <!--Buttons-->
+    <string name="next">Next</string>
+    <string name="loading">Loading...</string>
     <!--Categories-->
     <string-array name="categories">
         <item>Dev</item>
@@ -33,5 +36,11 @@
         <item>Money</item>
         <item>Fashion</item>
     </string-array>
+
+    <string name="facebook_app_id">1309138335840000</string>
+    <string name="share">Copy to share</string>
+
+    <string name="fb_login_protocol_scheme">fb1309138335840000</string>
+    <string name="copied">Fact copied to clipboard</string>
 
 </resources>

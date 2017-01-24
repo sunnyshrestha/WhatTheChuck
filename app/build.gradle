@@ -32,4 +32,9 @@ dependencies {
         transitive = true
     }
     compile 'com.mikepenz:fontawesome-typeface:4.7.0.0@aar'
+    compile 'com.github.championswimmer:Android-SocialButtons:1.0'
+    compile 'com.github.bhargavms:DotLoader:1.0.1'
+    compile 'com.github.medyo:fancybuttons:1.8.3'
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
+    compile 'com.github.jd-alexander:LikeButton:0.2.0'
 }
